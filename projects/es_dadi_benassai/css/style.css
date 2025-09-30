@@ -1,0 +1,16 @@
+
+
+.dice {
+    width: 105px; /* width of one dice face */
+    height: 105px; /* height of one dice face */
+    background-image: url('../images/dice-mesh.svg');
+    background-size: 315px 215px; /* total image size: 3 dice wide, 2 tall */
+    background-repeat: no-repeat;
+}
+
+.dice-1 { background-position:    0px    0px; }       /* top-left */
+.dice-2 { background-position:  -105px    0px; }       /* top-middle */
+.dice-3 { background-position: -210px    0px; }       /* top-right */
+.dice-4 { background-position:    0px  -105px; }       /* bottom-left */
+.dice-5 { background-position:  -105px  -105px; }       /* bottom-middle */
+.dice-6 { background-position: -210px  -105px; }       /* bottom-right */
