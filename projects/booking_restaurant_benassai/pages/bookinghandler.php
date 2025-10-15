@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resoconto Prenotazione</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
@@ -63,9 +63,9 @@
                 $price += $costSecondDish;
 
             if ($wantStarter && $wantFirstDish && $wantSecondDish)
-                $price *= 1 - $partialDiscount;
-            else if ($wantFirstDish && $wantSecondDish)
                 $price *= 1 - $completeDiscount;
+            else if ($wantFirstDish && $wantSecondDish)
+                $price *= 1 - $partialDiscount;
 
             switch ($parkingMode) {
                 case 1:
@@ -78,7 +78,7 @@
         }
     ?>
 
-    <h1>
+    <h1 class="text-center">
         Resoconto
     </h1>
 
@@ -157,7 +157,7 @@
                         </tr>
                         <tr>
                             <th>Costo</th>
-                            <td>'.$price.'</td>
+                            <td>'.number_format($price, 2).'€</td>
                         </tr>
                         <tr>
                             <th>Cameriere</th>
