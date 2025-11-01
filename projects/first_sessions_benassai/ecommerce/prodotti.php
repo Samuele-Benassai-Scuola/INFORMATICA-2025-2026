@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include './php/data.php';
+include_once './php/data.php';
 
 if (!isset($_SESSION["cart"]))
     $_SESSION["cart"] = [];
@@ -47,10 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Prodotti
     </h1>
 
-    <?php
-        var_dump($_SESSION["cart"]);
-    ?>
-
     <div class="container row mx-auto mt-3">
         <?php
             foreach ($products as $product) {
@@ -59,13 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<div class="contianer col-4 mx-auto mt-2 text-center card">
                         <div class="card-body">
                             <h5 class="card-title">'.$product["name"].'</h5>
+                            <p class="card-text">'.$product["price"].'€</p>
                             <form method="POST" action="./prodotti.php">
                                 <input type="hidden" name="action" value="ADD">
                                 <input type="hidden" name="product_id" value="'.$product["id"].'">
                                 <button type="submit" class="btn btn-primary">Add 1 to cart</button>
                             </form>';
                 if ($amount_in_cart > 0) {
-                    echo '<form method="POST" action="./prodotti.php">
+                    echo '<form method="POST" action="./prodotti.php" class="mt-1">
                                 <input type="hidden" name="action" value="REMOVE">
                                 <input type="hidden" name="product_id" value="'.$product["id"].'">
                                 <button type="submit" class="btn btn-primary">Remove 1 from cart</button>
@@ -76,6 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         ?>
     </div>
+
+    <p>
+        Vedi il carrello: <a href="./carrello.php">carrello</a>
+    </p>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

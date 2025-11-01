@@ -8,4 +8,13 @@ $products = [
     ["id" => 6, "name" => "Laptop Stand", "price" => 29.99],
     ["id" => 7, "name" => "External SSD 1TB", "price" => 119.90],
 ];
+
+function find_product($id) {
+    global $products;
+    foreach ($products as $product) {
+        if ($product["id"] == $id)
+            return $product;
+    }
+    return null;
+}
 ?>

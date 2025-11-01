@@ -7,7 +7,7 @@ if (!isset($_SESSION["user"])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    session_reset();
+    session_unset();
 
     header("Location: ./login.php");
     exit;
