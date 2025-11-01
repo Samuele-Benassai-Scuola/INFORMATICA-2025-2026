@@ -12,5 +12,8 @@
     <a href="./login/login.php">
         login.php
     </a>
+    <a href="./ecommerce/prodotti.php">
+        prodotti.php
+    </a>
 </body>
 </html>

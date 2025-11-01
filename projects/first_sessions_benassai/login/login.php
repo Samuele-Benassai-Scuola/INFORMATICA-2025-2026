@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["username"]) && isset($_POST["password"])) {
         if (isset($account[$_POST["username"]]) && $account[$_POST["username"]] === $_POST["password"]) {
             $_SESSION["user"] = $_POST["username"];
+            $_SESSION["login_time"] = time();
 
             header("Location: ./home.php");
             exit;

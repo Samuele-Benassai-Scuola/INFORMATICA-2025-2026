@@ -25,6 +25,9 @@ if (!isset($_SESSION["user"])) {
     <p class="mt-3 text-center">
         <?php echo "Benvenuto ".$_SESSION["user"] ?>
     </p>
+    <p class="text-center">
+        <?php echo "Orario login: ".date("d/m/y h:i:s\Z", $_SESSION["login_time"]) ?>
+    </p>
 
     <div class="mx-auto mt-3 text-center">
         <form method="POST" action="./logout.php">
