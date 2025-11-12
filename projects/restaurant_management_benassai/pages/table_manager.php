@@ -2,39 +2,32 @@
 session_start();
 
 include_once '../php/db.php';
+include_once '../php/session.php';
 
 if (!isset($_SESSION["user"])) {
     header("Location: ../pages/login.php");
     exit;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    /*if (isset($_POST["action"]) && isset($_POST["product_id"])) {
-        $product_id = intval($_POST["product_id"]);
-        $action = $_POST["action"];
-
-        switch ($action) {
-            case "ADD":
-                if (!isset($_SESSION["cart"][$product_id]))
-                    $_SESSION["cart"][$product_id] = 0;
-                $_SESSION["cart"][$product_id] += 1;
-                break;
-            case "REMOVE":
-                    if (!isset($_SESSION["cart"][$product_id]) || $_SESSION["cart"][$product_id] < 1)
-                        break;
-                    $_SESSION["cart"][$product_id] -= 1;
-                    if ($_SESSION["cart"][$product_id] < 1)
-                        unset($_SESSION["cart"][$product_id]);
-                break;
-        }
-    }*/
-}
-else {
-    header("Location: ../pages/login.php");
-    exit;
+if (!isset($_SESSION["table"])) {
+    init_table();
 }
 
-?>
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (!isset($_GET["table_id"])) {
+        header("Location: ../index.php");
+        exit;
+    }
+}
+
+var_dump($_SESSION["table"]);
+
+$table_id = $_GET["table_id"];
+
+$table_current = $table[$table_id];
+$table_current_session = $_SESSION["table"][$table_id];
+
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,39 +40,70 @@ else {
 </head>
 <body>
     <h1 class="text-center mt-3">
-        Prodotti
+        Tavolo: <?php echo $table_current["name"]; ?>
     </h1>
 
-    <div class="container row mx-auto mt-3">
-        <?php
-            foreach ($products as $product) {
-                $amount_in_cart = $_SESSION["cart"][$product["id"]] ?? 0;
+    <h2 class="text-center mt-3">
+        Piatti:
+    </h2>
 
-                echo '<div class="contianer col-4 mx-auto mt-2 text-center card">
-                        <div class="card-body">
-                            <h5 class="card-title">'.$product["name"].'</h5>
-                            <p class="card-text">'.$product["price"].'€</p>
-                            <form method="POST" action="./prodotti.php">
-                                <input type="hidden" name="action" value="ADD">
-                                <input type="hidden" name="product_id" value="'.$product["id"].'">
-                                <button type="submit" class="btn btn-primary">Add 1 to cart</button>
-                            </form>';
-                if ($amount_in_cart > 0) {
-                    echo '<form method="POST" action="./prodotti.php" class="mt-1">
-                                <input type="hidden" name="action" value="REMOVE">
-                                <input type="hidden" name="product_id" value="'.$product["id"].'">
-                                <button type="submit" class="btn btn-primary">Remove 1 from cart</button>
-                            </form>';
+    <div class="container row mx-auto mt-3">
+        <ul class="list-unstyled">
+            <?php
+                foreach ($table_current_session["order"] as $dish_id => $dish_quantity) {
+                    echo '<li>'.$dish_quantity.'x '.$dish[$dish_id]["name"].'</li>';
                 }
-                echo '</div>
-                    </div>';
-            }
-        ?>
+            ?>
+        </ul>
     </div>
 
+    <h2 class="text-center mt-3">
+        Note:
+    </h2>
+
     <p>
-        Vedi il carrello: <a href="./carrello.php">carrello</a>
+        <?php echo $table_current_session["notes"]; ?>
     </p>
+
+    <h2 class="text-center mt-3">
+        Modifica:
+    </h2>
+
+
+    <!-- 
+        TODO:
+        - add notes showing when set
+        - actually set edited quantities
+    -->
+    <form method="POST" action="../api/edit_order.php" class="text-center">
+        <input type="hidden" name="table_id" value="<?php echo $table_id ?>">
+
+        <div class="container mx-auto mt-3">
+            <h3>
+                Piatti
+            </h3>
+            <ul class="list-unstyled">
+                <?php
+                    foreach ($dish as $id => $data) {
+                        $amount_in_order = $table_current_session["order"][$id] ?? 0;
+
+                        echo '<ul>
+                                '.$data["name"].'
+                                    <input type="number" min="0" name="quantity_'.$id.'" value="'.$amount_in_order.'">
+                            </ul>';
+                    }
+                ?>
+            </ul>
+        </div>
+
+        <div class="contianer mx-auto mt-3">
+            <h3>
+                Note
+            </h3>
+            <input type="textarea" name="notes" value="<?php echo $table_current_session["notes"] ?>">
+        </div>
+        <button type="submit" class="btn btn-primary mt-1">Modifica</button>
+    </form>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

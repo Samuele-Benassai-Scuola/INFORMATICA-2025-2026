@@ -1,11 +1,16 @@
 <?php
 session_start();
 
-include './php/db.php';
+include_once './php/db.php';
+include_once './php/session.php';
 
 if (!isset($_SESSION["user"])) {
     header("Location: ./pages/login.php");
     exit;
+}
+
+if (!isset($_SESSION["table"])) {
+    init_table();
 }
 
 ?>
@@ -25,7 +30,7 @@ if (!isset($_SESSION["user"])) {
             User: 
             <?php echo $_SESSION["user"]; ?>
         </span>
-        <form method="POST" action="./pages/logout.php">
+        <form method="POST" action="./api/logout.php">
             <button type="submit" class="btn btn-primary">Logout</button>
         </form>
     </div>
@@ -38,15 +43,38 @@ if (!isset($_SESSION["user"])) {
     <div class="container row mx-auto mt-3">
         <?php
             foreach ($table as $id => $x) {
-                if ($x["served"] !== $_SESSION["user"])
+                if ($_SESSION["table"][$id]["served"] !== $_SESSION["user"])
                     continue;
 
                 echo '<div class="contianer col-4 mx-auto mt-2 text-center card">
                         <div class="card-body">
                             <h5 class="card-title">'.$x["name"].'</h5>
-                            <form method="POST" action="./pages/table_manager.php">
+                            <form method="GET" action="./pages/table_manager.php">
                                 <input type="hidden" name="table_id" value="'.$id.'">
                                 <button type="submit" class="btn btn-primary">Manage table</button>
+                            </form>
+                        </div>
+                    </div>';
+            }
+        ?>
+    </div>
+
+    <h1 class="text-center mt-3">
+        Tavoli non assegnati
+    </h1>
+
+    <div class="container row mx-auto mt-3">
+        <?php
+            foreach ($table as $id => $x) {
+                if ($_SESSION["table"][$id]["served"] !== null)
+                    continue;
+
+                echo '<div class="contianer col-4 mx-auto mt-2 text-center card">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$x["name"].'</h5>
+                            <form method="POST" action="./api/link_table.php">
+                                <input type="hidden" name="table_id" value="'.$id.'">
+                                <button type="submit" class="btn btn-primary">Obtain table</button>
                             </form>
                         </div>
                     </div>';

@@ -7,12 +7,12 @@ $account = [
 ];
 
 $table = [
-    1 => ["name" => "1", "served" => "a", "order" => [], "notes" => ""],
-    2 => ["name" => "2", "served" => "a", "order" => [], "notes" => ""],
-    3 => ["name" => "3", "served" => "b", "order" => [], "notes" => ""],
-    4 => ["name" => "4", "served" => "b", "order" => [], "notes" => ""],
-    5 => ["name" => "5", "served" => "c", "order" => [], "notes" => ""],
-    6 => ["name" => "6", "served" => "c", "order" => [], "notes" => ""]
+    1 => ["name" => "1"],
+    2 => ["name" => "2"],
+    3 => ["name" => "3"],
+    4 => ["name" => "4"],
+    5 => ["name" => "5"],
+    6 => ["name" => "6"]
 ];
 
 $dish = [

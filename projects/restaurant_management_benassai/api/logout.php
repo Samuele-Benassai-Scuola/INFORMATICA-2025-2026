@@ -5,6 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     unset($_SESSION["user"]);
 }
 
-header("Location: ../index.php");
+header("Location: ".$_SERVER["HTTP_REFERER"]);
 exit;
 ?>
