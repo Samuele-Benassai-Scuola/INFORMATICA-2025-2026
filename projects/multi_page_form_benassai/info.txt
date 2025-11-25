@@ -1,0 +1,13 @@
+Esercizio PHP Complesso: Sistema di Quiz Multi-Pagina
+​L'obiettivo è mantenere lo stato e le risposte dell'utente attraverso più pagine.
+​Funzionalità Richieste
+​Stato della Sessione: Mantenere traccia del numero di domande a cui l'utente ha risposto.
+​Dati Persistenti: Salvare le risposte fornite dall'utente nella sessione.
+​Logica del Flusso: Reindirizzare l'utente in base alla sua posizione nel quiz.
+​Conclusione: Mostrare il risultato finale solo dopo aver risposto a tutte le domande.
+​Struttura dei File
+​Avremo tre file principali:
+​quiz_data.php: Contiene la struttura del quiz (domande e risposte corrette).
+​index.php: La pagina principale che mostra la domanda corrente o il risultato finale.
+​process_answer.php: Elabora la risposta inviata, la salva in sessione e sposta l'utente alla domanda successiva.
+​reset.php: Per ricominciare il quiz.
