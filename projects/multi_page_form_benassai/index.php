@@ -5,7 +5,7 @@ include_once './php/form_methods.php';
 include_once './php/db.php';
 
 $html_form;
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['current_user'])) {
     $html_form = generate_login();
 }
 else {
@@ -15,6 +15,8 @@ else {
     $current_question = $_SESSION['current_question'];
     $html_form = generate_question($current_question, $questions[$current_question]);
 }
+
+// TODO: add previous
 
 ?>
 
@@ -30,5 +32,11 @@ else {
     <div>
         <?= $html_form ?>
     </div>
+    <?php
+    if (isset($_SESSION['current_user']) && isset($_SESSION['users'][$_SESSION['current_user']][$current_question])) {
+        $id_answer = $_SESSION['users'][$_SESSION['current_user']][$current_question];
+        echo '<p>Your previous answer: '.$questions[$current_question]['options'][$id_answer]['prompt'].'</p>';
+    }
+    ?>
 </body>
 </html>

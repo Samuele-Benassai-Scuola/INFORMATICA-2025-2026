@@ -3,7 +3,10 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['user'])) {
-        $_SESSION['user'] = $_POST['user'];
+        $_SESSION['users'] ??= [];
+
+        $_SESSION['current_user'] = $_POST['user'];
+        $_SESSION['users'][$_POST['user']] ??= [];
     }
 }
 
