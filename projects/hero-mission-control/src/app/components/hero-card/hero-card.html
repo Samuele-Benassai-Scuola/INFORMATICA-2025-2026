@@ -1,0 +1,7 @@
+<div class="card" [style.background-color]="hero.completed ? 'lightgreen' : 'white'">
+    <h3>{{ hero.name }}</h3>
+    <p>Potere: {{ hero.power }}</p>
+    <button (click)="triggerCompleted()" [disabled]="hero.completed">
+        Missione Compiuta
+    </button>
+</div>
