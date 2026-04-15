@@ -10,3 +10,7 @@
 </div>
 
 <p>Missioni completate: {{ totalCompleted }}</p>
+
+<app-hero-generator
+    (onGenerateHero)="handleGenerateHero($event)"
+></app-hero-generator>

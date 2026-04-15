@@ -1,0 +1,21 @@
+<h1>Hero generator</h1>
+
+<input
+    type="text"
+    placeholder="Nome"
+    [(ngModel)]="hero.name"
+>
+
+<input
+    type="text"
+    placeholder="Potere"
+    [(ngModel)]="hero.power"
+>
+
+<button
+    (click)="triggerGenerateHero()"
+>
+    Generate
+</button>
+
+{{ hero | json }}

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Hero } from '../../models/hero';
 import { CommonModule } from '@angular/common';
 import { HeroCard } from '../hero-card/hero-card';
+import { HeroGenerator } from '../hero-generator/hero-generator';
 
 @Component({
   selector: 'app-hero-list',
-  imports: [CommonModule, HeroCard],
+  imports: [CommonModule, HeroCard, HeroGenerator],
   templateUrl: './hero-list.html',
   styleUrl: './hero-list.css',
 })
@@ -28,5 +29,9 @@ export class HeroList {
 
   countTotalCompleted(): number {
     return this.totalCompleted = this.list.filter(h => h.completed).length
+  }
+
+  handleGenerateHero(hero: Hero) {
+    this.list.push(hero)
   }
 }
