@@ -20,6 +20,8 @@ export class HeroList {
     { id: 5, name: "E", power: "e", completed: false }
   ]
 
+  heroSelected: Hero = {} as Hero;
+
   totalCompleted: number = this.countTotalCompleted()
 
   handleCompleted(hero: Hero) {
@@ -32,6 +34,11 @@ export class HeroList {
   }
 
   handleGenerateHero(hero: Hero) {
-    this.list.push(hero)
+    this.list.push({...hero})
+  }
+
+  handleEdit(hero: Hero) {
+    this.heroSelected = hero;
+    this.list = this.list.filter(h => h != hero)
   }
 }

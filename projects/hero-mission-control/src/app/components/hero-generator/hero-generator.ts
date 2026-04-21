@@ -22,5 +22,11 @@ export class HeroGenerator {
 
   triggerGenerateHero() {
     this.onGenerateHero.emit(this.hero)
+    this.hero = {
+      id: 1,
+      name: "",
+      power: "",
+      completed: false
+    }
   }
 }

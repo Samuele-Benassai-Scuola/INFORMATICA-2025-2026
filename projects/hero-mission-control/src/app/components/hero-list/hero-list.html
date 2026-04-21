@@ -6,11 +6,13 @@
 
         [hero]="h"
         (onCompleted)="handleCompleted(h)"
+        (onEdit)="handleEdit(h)"
     ></app-hero-card>
 </div>
 
 <p>Missioni completate: {{ totalCompleted }}</p>
 
 <app-hero-generator
+    [hero]="heroSelected"
     (onGenerateHero)="handleGenerateHero($event)"
 ></app-hero-generator>
