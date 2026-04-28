@@ -1,0 +1,9 @@
+<h1>Mission Control Center</h1>
+<div class="container">
+    <app-hero-card
+        *ngFor="let h of list"
+
+        [hero]="h"
+    ></app-hero-card>
+</div>
+<p>Missioni completate: {{ totalCompleted() }}</p>
