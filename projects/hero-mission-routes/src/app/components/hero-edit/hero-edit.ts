@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Hero } from '../../models/hero';
 import { HeroService } from '../../services/hero-service';
 import { JsonPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-hero-edit',
-  imports: [JsonPipe],
+  imports: [JsonPipe, FormsModule, RouterLink],
   templateUrl: './hero-edit.html',
   styleUrl: './hero-edit.css',
 })
@@ -33,5 +34,9 @@ export class HeroEdit {
       return
 
     this.hero = res as Hero
+  }
+
+  saveEdit() {
+    this.heroes.updateHero(this.hero as Hero);
   }
 }

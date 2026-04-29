@@ -33,12 +33,12 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): boolean {
-    const matches = this.list.filter(h => h.id === hero.id)
-    if (matches === undefined || matches.length == 0)
+    const idx = this.list.findIndex(h => h.id === hero.id)
+    if (idx === -1)
       return false
 
-    let match = matches[0]
-    match = hero;
+    console.log('SAVED!')
+    this.list[idx] = hero
     return true;
   }
 

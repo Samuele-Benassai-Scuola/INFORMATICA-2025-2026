@@ -1,4 +1,36 @@
 <div>
-    <!-- TODO: somehow check whether hero is null before using two way binding -->
+    <div>
+        <a routerLink="/">Return to list</a>
+    </div>
+    <div>
+        @if (hero) {
+            <label for="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                [(ngModel)]="hero.name"
+            >
+            <label for="power">Power</label>
+            <input
+                type="text"
+                name="power"
+                [(ngModel)]="hero.power"
+            >
+            <label for="completed">Completed</label>
+            <input
+                type="checkbox"
+                name="completed"
+                [(ngModel)]="hero.completed"
+            >
+            <button
+                (click)="saveEdit()"
+            >
+                Save edit
+            </button>
+        }
+        @else {
+            <p>No hero exists with the given ID</p>
+        }
+    </div>
 </div>
 {{ this.hero | json }}
