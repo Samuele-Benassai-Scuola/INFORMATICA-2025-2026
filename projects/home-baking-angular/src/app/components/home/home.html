@@ -1,0 +1,12 @@
+<h1>Home</h1>
+
+<div
+    *ngFor="let acc of accounts"
+>
+    <app-account-desc [data]="acc"></app-account-desc>
+    <a routerLink="/app/account/{{acc.id}}">
+        <button>
+            Manage account
+        </button>
+    </a>
+</div>
