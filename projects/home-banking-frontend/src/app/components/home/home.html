@@ -1,0 +1,15 @@
+<div>
+    <h1>
+        Account
+    </h1>
+    <div
+        *ngFor="let acc of accounts"
+    >
+        <app-account-card
+            [account]="acc"
+        ></app-account-card>
+        <a routerLink="/app/account/{{acc.id}}">
+            <button>Manage account</button>
+        </a>
+    </div>
+</div>

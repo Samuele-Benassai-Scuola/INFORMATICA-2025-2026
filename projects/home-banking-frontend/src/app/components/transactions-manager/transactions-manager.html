@@ -1,0 +1,9 @@
+<div>
+    <div
+        *ngFor="let t of transactions"
+    >
+        <app-transaction-card
+            [transaction]="t"
+        ></app-transaction-card>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<ul style="list-style-type: none;">
+    <li>ID: {{transaction.id}}</li>
+    <li>
+        Quantità: 
+        <span [style.color]="transaction.type === 'DEPOSIT' ? 'green' : 'red'">
+            {{transaction.type === 'DEPOSIT' ? '+' : '-'}}
+            {{transaction.amount}}
+        </span>
+    </li>
+    <li>Data: {{transaction.created_at.toLocaleString('it-IT')}}</li>
+    <li>Descrizione:</li>
+    <li>{{transaction.description}}</li>
+    <li>Saldo successivo: {{transaction.balance_after}}</li>
+</ul>

@@ -1,0 +1,16 @@
+<div>
+    @if (id_account) {
+        <app-transactions-card
+            [id_account]="id_account"
+        ></app-transactions-card>
+        <app-transaction-maker-card
+            [id_account]="id_account"
+        ></app-transaction-maker-card>
+        <app-balance-card
+            [id_account]="id_account"
+        ></app-balance-card>
+    }
+    @else {
+        <p>Invalid ID account</p>
+    }
+</div>
