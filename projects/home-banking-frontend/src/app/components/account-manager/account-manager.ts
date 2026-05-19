@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TransactionsCard } from '../cards/transactions-card/transactions-card';
 import { TransactionMakerCard } from '../cards/transaction-maker-card/transaction-maker-card';
-import { BalanceCard } from '../cards/balance-card/balance-card';
+import { BalanceRouteCard } from '../cards/balance-route-card/balance-route-card';
 
 @Component({
   selector: 'app-account-manager',
-  imports: [TransactionsCard, TransactionMakerCard, BalanceCard],
+  imports: [TransactionsCard, TransactionMakerCard, BalanceRouteCard],
   templateUrl: './account-manager.html',
   styleUrl: './account-manager.css',
 })

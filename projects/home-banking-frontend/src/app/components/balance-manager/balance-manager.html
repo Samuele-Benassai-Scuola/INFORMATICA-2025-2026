@@ -1,1 +1,29 @@
-<p>balance-manager works!</p>
+<app-balance-card
+    [balance]="balance"
+></app-balance-card>
+
+<h2>Show converted</h2>
+
+<div>
+    <label for="conversion_type">Conversion Type</label>
+    <br>
+    <input list="conversion_types" name="conversion_type" [(ngModel)]="conversion_type">
+    <datalist id="conversion_types">
+        <option value="fiat">
+        <option value="crypto">
+    </datalist>
+</div>
+
+<div>
+    <label for="conversion_currency">Conversion Currency</label>
+    <br>
+    <input type="text" name="conversion_currency" [(ngModel)]="conversion_currency">
+</div>
+
+<button (click)="convert()">
+    CONVERT
+</button>
+
+@if (converted_balance) {
+    <app-converted-balance-card></app-converted-balance-card>
+}

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Transaction } from '../../models/transaction';
 import { CommonModule } from '@angular/common';
 import { TransactionCard } from '../cards/transaction-card/transaction-card';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-transactions-manager',
-  imports: [CommonModule, TransactionCard],
+  imports: [CommonModule, TransactionCard, RouterLink],
   templateUrl: './transactions-manager.html',
   styleUrl: './transactions-manager.css',
 })

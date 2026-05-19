@@ -1,6 +1,4 @@
-<div>
-  <p>Visualizza il saldo</p>
-  <a routerLink="/app/account/{{ id_account }}/balance">
-    <button>VAI</button>
-  </a>
-</div>
+<ul style="list-style-type: none;">
+    <li>ID Account: {{balance.id_account}}</li>
+    <li>Balance: {{balance.balance}} {{balance.currency}}</li>
+</ul>

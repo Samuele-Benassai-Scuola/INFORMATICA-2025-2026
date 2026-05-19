@@ -4,11 +4,13 @@ import { AccountManager } from './components/account-manager/account-manager';
 import { BalanceManager } from './components/balance-manager/balance-manager';
 import { TransactionsManager } from './components/transactions-manager/transactions-manager';
 import { TransactionMakerManager } from './components/transaction-maker-manager/transaction-maker-manager';
+import { SingleTransactionManager } from './components/single-transaction-manager/single-transaction-manager';
 
 export const routes: Routes = [
-    { path: 'app', component: Home },
-    { path: 'app/account/:id_account', component: AccountManager},
-    { path: 'app/account/:id_account/balance', component: BalanceManager},
-    { path: 'app/account/:id_account/transaction', component: TransactionsManager},
-    { path: 'app/account/:id_account/transaction/make', component: TransactionMakerManager},
+    { path: '', component: Home },
+    { path: 'account/:id_account', component: AccountManager},
+    { path: 'account/:id_account/balance', component: BalanceManager},
+    { path: 'account/:id_account/transaction', component: TransactionsManager},
+    { path: 'account/:id_account/transaction/:id', component: SingleTransactionManager},
+    { path: 'account/:id_account/transaction/make', component: TransactionMakerManager},
 ];

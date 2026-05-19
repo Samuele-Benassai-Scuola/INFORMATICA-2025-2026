@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './transaction-maker-manager.html',
   styleUrl: './transaction-maker-manager.css',
 })
-export class TransactionMakerManager {}
+export class TransactionMakerManager {
+ 
+}
