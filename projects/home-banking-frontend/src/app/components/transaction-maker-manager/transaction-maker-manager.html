@@ -1,1 +1,40 @@
-<p>Transaction maker manager works!</p>
+@if (transaction === null) {
+    <p>Account ID non trovato</p>
+}
+@else {
+    <div>
+        <label for="type">Tipo</label>
+        <br>
+        <input
+            list="types"
+            name="type"
+            [(ngModel)]="transaction.type"
+        >
+        <datalist id="types">
+            <option value="DEPOSIT">
+            <option value="WITHDRAWAL">
+        </datalist>
+    </div>
+    <div>
+        <label for="amount">Quantità</label>
+        <br>
+        <input
+            type="number"
+            name="amount"
+            [(ngModel)]="transaction.amount"
+        >
+    </div>
+    <div>
+        <label for="description">Descrizione</label>
+        <br>
+        <input
+            type="text"
+            name="description"
+            [(ngModel)]="transaction.description"
+        >
+    </div>
+
+    <button (click)="createTransaction()">
+        CREATE
+    </button>
+}

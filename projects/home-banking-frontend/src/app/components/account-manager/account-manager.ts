@@ -20,7 +20,5 @@ export class AccountManager {
     if (arg !== null)
       if (!isNaN(Number(arg)))
         this.id_account = Number(arg)
-    
-    console.log('ID:', this.id_account);
   }
 }

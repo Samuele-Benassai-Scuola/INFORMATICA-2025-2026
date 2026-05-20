@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ConvertedBalance } from '../../../models/converted-balance';
 
 @Component({
@@ -8,5 +8,5 @@ import { ConvertedBalance } from '../../../models/converted-balance';
   styleUrl: './converted-balance-card.css',
 })
 export class ConvertedBalanceCard {
-  converted_balance!: ConvertedBalance
+  @Input() converted_balance!: ConvertedBalance
 }

@@ -25,5 +25,7 @@
 </button>
 
 @if (converted_balance) {
-    <app-converted-balance-card></app-converted-balance-card>
+    <app-converted-balance-card
+        [converted_balance]="converted_balance"
+    ></app-converted-balance-card>
 }
